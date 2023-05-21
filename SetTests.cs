@@ -46,6 +46,12 @@ public static class SetTests {
     private static HashSet<int> Intersection(HashSet<int> set1, HashSet<int> set2) {
         var result = new HashSet<int>();
         // TODO Problem 1.1 (don't forget to fill out the 05-prove-response.md)
+        foreach (var item in set1) {
+            if(set2.Contains(item)) {
+                result.Add(item);
+            }
+            
+        }
         return result;
     }
 
@@ -55,9 +61,12 @@ public static class SetTests {
     /// <param name="set1">A set of integers</param>
     /// <param name="set2">A set of integers</param>
     private static HashSet<int> Union(HashSet<int> set1, HashSet<int> set2) {
-        var result = new HashSet<int>();
+        // var result = new HashSet<int>();
         // TODO Problem 1.2 (don't forget to fill out the 05-prove-response.md)
-        return result;
+        foreach (var item in set2) {
+            set1.Add(item);
+        }
+        return set1;
     }
     
     /// <summary>
@@ -83,5 +92,15 @@ public static class SetTests {
         // To display the pair correctly use something like:
         // Console.WriteLine($"{word} & {pair}");
         // Each pair of words should displayed on its own line.
+        HashSet<string> checking = new HashSet<string>();
+        
+        for (int i = 0; i < words.Length; i++) {
+            string string_substr = words[i].Substring(1,1) + words[i].Substring(0, 1);
+            checking.Add(words[i]);
+            if((checking.Contains(string_substr)) && (words[i] != (string_substr))) {
+                Console.WriteLine($"{words[i]} & {string_substr}");
+            }
+            
+        }
     }
 }
